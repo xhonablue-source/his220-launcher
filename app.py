@@ -97,6 +97,7 @@ def main():
         letter-spacing: 0.05em;
     }
 
+    /* Orange/Yellow Gradient - Used for Course Welcome */
     .featured-section {
         margin: 2rem 1rem;
         background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
@@ -107,6 +108,7 @@ def main():
         text-align: center;
     }
 
+    /* Purple Gradient - Used for Mandatory Week 2 Quiz */
     .special-section {
         margin: 2rem 1rem;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -347,14 +349,30 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Featured Week 2 Quiz (Updated link and description)
+    # NEW: Course Welcome (Orange Gradient)
+    st.markdown("""
+    <div class="featured-section">
+        <div class="special-title">🌟 HIS220 Course Welcome & Portal 🌟</div>
+        <div class="special-subtitle">Your gateway to all course materials and interactive learning tools.</div>
+        <a href="https://his-220-michigan.streamlit.app/" target="_blank" class="special-card">
+            <div class="special-icon">🏛️📚</div>
+            <div class="special-card-title">Launch Your Michigan History Journey</div>
+            <div class="special-card-desc">
+                Click here for the main course portal, containing interactive lectures, full syllabi,
+                study guides, and additional historical resources for HIS220.
+            </div>
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Week 2 Quiz (Purple Gradient) - Mandatory Assessment
     st.markdown("""
     <div class="special-section">
-        <div class="special-title">📝 Mandatory Weekly Assessment: Week 2 Quiz</div>
+        <div class="special-title">📝 Mandatory Weekly Assessment: Updated Week 2 Quiz</div>
         <div class="special-subtitle">100-Question Formative Quiz (100 Points)</div>
         <a href="https://his220-week2.streamlit.app/" target="_blank" class="special-card">
             <div class="special-icon">💯✅</div>
-            <div class="special-card-title">Updated Week 2 Quiz: Immediate Red/Green Explanations</div>
+            <div class="special-card-title">Access Updated Week 2 Quiz (100 Points)</div>
             <div class="special-card-desc">
                 This is the required 100-point quiz for Week 2, featuring the new instant feedback system. 
                 Receive a **green** check for correct answers or a **red** 'X' plus the full contextual explanation immediately after submission.
@@ -362,6 +380,7 @@ def main():
         </a>
     </div>
     """, unsafe_allow_html=True)
+
 
     # Week 1: Course Introduction
     st.markdown("""
