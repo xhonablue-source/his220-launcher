@@ -312,7 +312,7 @@ def main():
     st.markdown("""
     <div class="main-header">
         <h1 class="course-title">🏛️ HIS220: Michigan History</h1>
-        <p class="college-info">Wayne County Community College District</p>
+        <p class="college-info">Wayne County Community College District • CognitiveCloud.ai Launcher</p>
         <p class="instructor-info">Instructor: Xavier Honablue, M.Ed. | Room 204 | honablue@umich.edu</p>
         <div class="course-details">
             <div class="detail-badge">3 Credit Hours</div>
@@ -347,18 +347,17 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Featured Century Challenge
+    # Featured Week 2 Quiz (Updated link and description)
     st.markdown("""
-    <div class="featured-section">
-        <div class="special-title">🎯 Michigan Century Challenge</div>
-        <div class="special-subtitle">100-Question Interactive Mastery Quiz</div>
-        <a href="https://his-220-michigan.streamlit.app/" target="_blank" class="special-card">
-            <div class="special-icon">🏆📚</div>
-            <div class="special-card-title">Test Your Michigan History Mastery</div>
+    <div class="special-section">
+        <div class="special-title">📝 Mandatory Weekly Assessment: Week 2 Quiz</div>
+        <div class="special-subtitle">100-Question Formative Quiz (100 Points)</div>
+        <a href="https://his220-week2.streamlit.app/" target="_blank" class="special-card">
+            <div class="special-icon">💯✅</div>
+            <div class="special-card-title">Updated Week 2 Quiz: Immediate Red/Green Explanations</div>
             <div class="special-card-desc">
-                Take on the ultimate challenge! 100 questions covering Michigan's First Residents, 
-                Colonial Period, and Early Statehood. Features immediate feedback, XP tracking, 
-                achievements, and comprehensive learning analytics.
+                This is the required 100-point quiz for Week 2, featuring the new instant feedback system. 
+                Receive a **green** check for correct answers or a **red** 'X' plus the full contextual explanation immediately after submission.
             </div>
         </a>
     </div>
@@ -390,7 +389,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 2: Michigan's First Residents - ACTIVE
+    # Week 2: Michigan's First Residents - ACTIVE (Updated CTA link)
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
@@ -414,10 +413,10 @@ def main():
             <div class="assignment-desc">300-400 word reflection on Michigan's Native American history - Due Wednesday</div>
         </div>
         <div class="assignment-info" style="background: #f0fff4; border-left: 3px solid #38a169;">
-            <a href="https://his-220-michigan.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+            <a href="https://his220-week2.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
                 <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
-                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🎮 Practice: 100-Question Challenge</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Interactive quiz with immediate feedback - Test your knowledge!</div>
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">📝 ACCESS: Updated Week 2 Quiz (100 Points)</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Required formative assessment with immediate red/green explanations.</div>
                 </div>
             </a>
         </div>
@@ -502,33 +501,35 @@ def main():
 
     for week_info in weeks_data:
         section_class = "week-section" if not week_info.get("exam") else "week-section"
-        st.markdown(f"""
-        <div class="{section_class}">
-            <div class="week-title">
-                <div class="week-number">{week_info['week']}</div>
-                Week {week_info['week']}: {week_info['title']}
-            </div>
-            <div class="lesson-grid">
-        """, unsafe_allow_html=True)
-        
-        for lesson_title, icon, day in week_info["lessons"]:
-            card_class = "lesson-card coming-soon"
+        # Only show remaining weeks (3-16) as coming soon
+        if week_info['week'] >= 3:
             st.markdown(f"""
-                <div class="{card_class}">
-                    <div class="lesson-icon">{icon}</div>
-                    <h4 class="lesson-title">{lesson_title}</h4>
-                    <p class="lesson-type">{day}</p>
+            <div class="{section_class}">
+                <div class="week-title">
+                    <div class="week-number">{week_info['week']}</div>
+                    Week {week_info['week']}: {week_info['title']}
                 </div>
+                <div class="lesson-grid">
             """, unsafe_allow_html=True)
-        
-        st.markdown(f"""
+            
+            for lesson_title, icon, day in week_info["lessons"]:
+                card_class = "lesson-card coming-soon"
+                st.markdown(f"""
+                    <div class="{card_class}">
+                        <div class="lesson-icon">{icon}</div>
+                        <h4 class="lesson-title">{lesson_title}</h4>
+                        <p class="lesson-type">{day}</p>
+                    </div>
+                """, unsafe_allow_html=True)
+            
+            st.markdown(f"""
+                </div>
+                <div class="assignment-info">
+                    <div class="assignment-title">{week_info['assignment']}</div>
+                    <div class="assignment-desc">{'Comprehensive examination covering course materials' if week_info.get('exam') else 'Weekly historical writing and analysis assignment'}</div>
+                </div>
             </div>
-            <div class="assignment-info">
-                <div class="assignment-title">{week_info['assignment']}</div>
-                <div class="assignment-desc">{'Comprehensive examination covering course materials' if week_info.get('exam') else 'Weekly historical writing and analysis assignment'}</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
