@@ -500,9 +500,20 @@ def main():
     ]
 
     for week_info in weeks_data:
-        section_class = "week-section" if not week_info.get("exam") else "week-section"
-        # Only show remaining weeks (3-16) as coming soon
+        # Only show weeks 3-16 in this loop
         if week_info['week'] >= 3:
+            section_class = "week-section"
+            
+            # Additional style for exams
+            assignment_bg = "#edf2f7"
+            assignment_border = "#4299e1"
+            assignment_desc = 'Weekly historical writing and analysis assignment'
+            
+            if week_info.get("exam"):
+                assignment_bg = "#fff5f5"
+                assignment_border = "#e53e3e"
+                assignment_desc = 'Comprehensive examination covering course materials'
+
             st.markdown(f"""
             <div class="{section_class}">
                 <div class="week-title">
@@ -524,9 +535,9 @@ def main():
             
             st.markdown(f"""
                 </div>
-                <div class="assignment-info">
+                <div class="assignment-info" style="background: {assignment_bg}; border-left: 3px solid {assignment_border};">
                     <div class="assignment-title">{week_info['assignment']}</div>
-                    <div class="assignment-desc">{'Comprehensive examination covering course materials' if week_info.get('exam') else 'Weekly historical writing and analysis assignment'}</div>
+                    <div class="assignment-desc">{assignment_desc}</div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
