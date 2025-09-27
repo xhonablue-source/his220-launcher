@@ -349,10 +349,10 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # NEW: Course Welcome (Orange Gradient)
+    # UPDATED: Course Welcome (Orange Gradient) - "Portal" deleted from heading
     st.markdown("""
     <div class="featured-section">
-        <div class="special-title">🌟 HIS220 Course Welcome & Portal 🌟</div>
+        <div class="special-title">🌟 HIS220 Course Welcome 🌟</div>
         <div class="special-subtitle">Your gateway to all course materials and interactive learning tools.</div>
         <a href="https://his-220-michigan.streamlit.app/" target="_blank" class="special-card">
             <div class="special-icon">🏛️📚</div>
