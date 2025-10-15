@@ -325,16 +325,16 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Progress Summary
+    # Progress Summary - Updated to reflect 5 active lessons
     st.markdown("""
     <div class="progress-summary">
         <div class="progress-stats">
             <div>
-                <div class="stat-number">3</div>
+                <div class="stat-number">5</div>
                 <div class="stat-label">Active Lessons</div>
             </div>
             <div>
-                <div class="stat-number">29</div>
+                <div class="stat-number">27</div>
                 <div class="stat-label">Coming Soon</div>
             </div>
             <div>
@@ -349,7 +349,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # UPDATED: Course Welcome (Orange Gradient) - "Portal" deleted from heading
+    # Course Welcome (Orange Gradient)
     st.markdown("""
     <div class="featured-section">
         <div class="special-title">🌟 HIS220 Course Welcome 🌟</div>
@@ -408,7 +408,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Week 2: Michigan's First Residents - ACTIVE (Updated CTA link)
+    # Week 2: Michigan's First Residents - ACTIVE
     st.markdown("""
     <div class="week-section">
         <div class="week-title">
@@ -442,18 +442,68 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
+    # Week 3: French Exploration & Colonial Period
+    st.markdown("""
+    <div class="week-section">
+        <div class="week-title">
+            <div class="week-number">3</div>
+            Week 3: French Exploration & Colonial Period
+        </div>
+        <div class="lesson-grid">
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">⛵</div>
+                <h4 class="lesson-title">French Explorers & Missionaries</h4>
+                <p class="lesson-type">Monday</p>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-icon">🏰</div>
+                <h4 class="lesson-title">French Colonial Administration</h4>
+                <p class="lesson-type">Wednesday</p>
+            </div>
+        </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Assignment 2: Colonial Period Analysis (4.6%)</div>
+            <div class="assignment-desc">Weekly historical writing and analysis assignment</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Week 4: British Colonial Period - ACTIVE (NEW!)
+    st.markdown("""
+    <div class="week-section">
+        <div class="week-title">
+            <div class="week-number">4</div>
+            Week 4: British Colonial Period
+        </div>
+        <div class="lesson-grid">
+            <a href="https://his220-week4.streamlit.app/" target="_blank" class="lesson-card active">
+                <div class="lesson-icon">🇬🇧</div>
+                <h4 class="lesson-title">British Control & Treaty of Paris</h4>
+                <p class="lesson-type">Monday • British Colonial Period</p>
+            </a>
+            <a href="https://his220-week4.streamlit.app/" target="_blank" class="lesson-card active">
+                <div class="lesson-icon">⚔️</div>
+                <h4 class="lesson-title">Pontiac's Rebellion</h4>
+                <p class="lesson-type">Wednesday • Colonial Conflicts</p>
+            </a>
+        </div>
+        <div class="assignment-info">
+            <div class="assignment-title">Assignment 3: British Colonial Policy Essay (4.6%)</div>
+            <div class="assignment-desc">Analysis of British colonial administration in Michigan Territory</div>
+        </div>
+        <div class="assignment-info" style="background: #f0fff4; border-left: 3px solid #38a169;">
+            <a href="https://his220-week4.streamlit.app/" target="_blank" style="text-decoration: none; display: block;">
+                <div style="background: #38a169; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.background='#2f855a'" onmouseout="this.style.background='#38a169'">
+                    <div style="font-weight: 600; margin-bottom: 0.2rem;">🇬🇧 ACCESS: Week 4 Interactive Lesson</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Explore the British Colonial Period with interactive content.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     # Remaining weeks
     weeks_data = [
-        {
-            "week": 3, "title": "French Exploration & Colonial Period",
-            "lessons": [("French Explorers & Missionaries", "⛵", "Monday"), ("French Colonial Administration", "🏰", "Wednesday")],
-            "assignment": "Assignment 2: Colonial Period Analysis (4.6%)"
-        },
-        {
-            "week": 4, "title": "British Colonial Period",
-            "lessons": [("British Control & Treaty of Paris", "🇬🇧", "Monday"), ("Pontiac's Rebellion", "⚔️", "Wednesday")],
-            "assignment": "Assignment 3: British Colonial Policy Essay (4.6%)"
-        },
         {
             "week": 5, "title": "American Revolution Impact",
             "lessons": [("Revolutionary War in Michigan", "🇺🇸", "Monday"), ("Post-Revolutionary Transition", "📜", "Wednesday")],
@@ -519,47 +569,46 @@ def main():
     ]
 
     for week_info in weeks_data:
-        # Only show weeks 3-16 in this loop
-        if week_info['week'] >= 3:
-            section_class = "week-section"
-            
-            # Additional style for exams
-            assignment_bg = "#edf2f7"
-            assignment_border = "#4299e1"
-            assignment_desc = 'Weekly historical writing and analysis assignment'
-            
-            if week_info.get("exam"):
-                assignment_bg = "#fff5f5"
-                assignment_border = "#e53e3e"
-                assignment_desc = 'Comprehensive examination covering course materials'
+        section_class = "week-section"
+        
+        # Additional style for exams
+        assignment_bg = "#edf2f7"
+        assignment_border = "#4299e1"
+        assignment_desc = 'Weekly historical writing and analysis assignment'
+        
+        if week_info.get("exam"):
+            assignment_bg = "#fff5f5"
+            assignment_border = "#e53e3e"
+            assignment_desc = 'Comprehensive examination covering course materials'
 
-            st.markdown(f"""
-            <div class="{section_class}">
-                <div class="week-title">
-                    <div class="week-number">{week_info['week']}</div>
-                    Week {week_info['week']}: {week_info['title']}
-                </div>
-                <div class="lesson-grid">
-            """, unsafe_allow_html=True)
-            
-            for lesson_title, icon, day in week_info["lessons"]:
-                card_class = "lesson-card coming-soon"
-                st.markdown(f"""
-                    <div class="{card_class}">
-                        <div class="lesson-icon">{icon}</div>
-                        <h4 class="lesson-title">{lesson_title}</h4>
-                        <p class="lesson-type">{day}</p>
-                    </div>
-                """, unsafe_allow_html=True)
-            
-            st.markdown(f"""
-                </div>
-                <div class="assignment-info" style="background: {assignment_bg}; border-left: 3px solid {assignment_border};">
-                    <div class="assignment-title">{week_info['assignment']}</div>
-                    <div class="assignment-desc">{assignment_desc}</div>
-                </div>
+        st.markdown(f"""
+        <div class="{section_class}">
+            <div class="week-title">
+                <div class="week-number">{week_info['week']}</div>
+                Week {week_info['week']}: {week_info['title']}
             </div>
+            <div class="lesson-grid">
+        """, unsafe_allow_html=True)
+        
+        for lesson_title, icon, day in week_info["lessons"]:
+            card_class = "lesson-card coming-soon"
+            st.markdown(f"""
+                <div class="{card_class}">
+                    <div class="lesson-icon">{icon}</div>
+                    <h4 class="lesson-title">{lesson_title}</h4>
+                    <p class="lesson-type">{day}</p>
+                </div>
             """, unsafe_allow_html=True)
+        
+        st.markdown(f"""
+            </div>
+            <div class="assignment-info" style="background: {assignment_bg}; border-left: 3px solid {assignment_border};">
+                <div class="assignment-title">{week_info['assignment']}</div>
+                <div class="assignment-desc">{assignment_desc}</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
+        
